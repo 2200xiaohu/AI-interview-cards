@@ -15,7 +15,7 @@ Q3：***解释什么是K-means聚类？***
 
 - K-means聚类是一种**聚类**分析方法，把数据空间中的n个点划分到k个簇中；聚类目标是，让簇内的点尽量紧密的连在一起，而让簇间的距离尽量的大（**类内方差最小，类间方差最大**）；
 
-![Untitled](K-means%20c0be57b3cff544c9ae464d2dfcd3dcba/Untitled.png)
+![Untitled](https://typora-nigel.oss-cn-nanjing.aliyuncs.com/img/Untitled.png)
 
 Q4：***K-means聚类的停止标准是什么？***
 
@@ -45,7 +45,7 @@ Q8：***在使用K-means聚类算法时，如何选择K的值？***
 - 经验性选择：将样本量除以2再开方出来的值作为K值：$K=\sqrt{n/2}$
 - elbow methods：基于K-means聚类框架下的聚类算法在最小化目标函数时本质上就是最小化整个簇内距离。根据簇内距离的定义可知，当K值越小时，那么簇内距离便会越大；而当K值越大时，那么簇内距离便会越小。在K值由小变大的过程中，随着K值的增大簇内距离便会逐步减小，但是当K值取得最优解后簇内距离便不会出现明显的降幅。如下图，经验性地选取K=3为数据集的最优解。
 
-![Untitled](K-means%20c0be57b3cff544c9ae464d2dfcd3dcba/Untitled%201.png)
+![Untitled](https://typora-nigel.oss-cn-nanjing.aliyuncs.com/img/Untitled 1.png)
 
 Q9：***比较分层聚类（Hierarchical Clustering）和K-means聚类算法***
 
@@ -64,20 +64,25 @@ Q11：***在聚类算法中，使用曼哈顿距离和使用欧式距离有什�
 - 欧式距离指两个点之间的真实距离；它将样本的不同维度之间的差别等同看待，这一点有时不能满足实际要求；
 - 曼哈顿距离指在欧几里得空间的固定直角坐标系上两点所形成的线段对轴产生的投影的距离总和；计算中，曼哈顿距离的计算速度更快。
 - 欧氏距离和曼哈顿距离的区别在于：它们对向量之间差异的计算过程中，各个维度差异的权值不同
+- 曼哈顿距离更加注重各个维度之间的差异，而不是整体距离的大小。这种计算方式使得曼哈顿距离对于一些数据分布不均匀或者方向不同的样本点，能够更好地反映它们之间的差异性。
 
 Q12：***列举几种情况，在这些情况下K-means算法难以取得较好效果***
 
-- 若样本数据是各向异性的，那么k-means算法的效果较差。通俗讲就是样本数据落在各个方向的概率是相等的K-mean算法才适用，不相等的话不适用
+- （若样本数据是各向异性的，那么k-means算法的效果较差。通俗讲就是样本数据落在各个方向的概率是相等的K-mean算法才适用，不相等的话不适用） （本来的答案）
+- （若样本数据是非凸数据集的时候，k-means算法的效果较差。非凸数据可以理解为簇类中心是一条线）（本来的答案）
+- 如果数据集中的簇具有不规则的形状，例如长条形或环状等，K-means算法可能无法正确地识别簇的边界。在这种情况下，算法可能会将一个簇划分成多个子簇，或者将多个簇错误地划分为同一个簇。（自己写的）
 
-![Untitled](K-means%20c0be57b3cff544c9ae464d2dfcd3dcba/Untitled%202.png)
+![Untitled](https://typora-nigel.oss-cn-nanjing.aliyuncs.com/img/Untitled 2.png)
 
-- 若样本数据是非凸数据集的时候，k-means算法的效果较差。非凸数据可以理解为簇类中心是一条线
+![Untitled](https://typora-nigel.oss-cn-nanjing.aliyuncs.com/img/Untitled 3.png)
 
-![Untitled](K-means%20c0be57b3cff544c9ae464d2dfcd3dcba/Untitled%203.png)
+- 若各簇类的样本数相差比较大，聚类性能较差，会导致数据量大的簇对聚类结果产生更大的影响，导致算法更偏向于将数据点划分到该簇
 
-- 若各簇类的样本数相差比较大，聚类性能较差
+![Untitled](https://typora-nigel.oss-cn-nanjing.aliyuncs.com/img/Untitled 4.png)
 
-![Untitled](K-means%20c0be57b3cff544c9ae464d2dfcd3dcba/Untitled%204.png)
+- 簇之间的密度差异很大：如果数据集中的簇之间的密度差异很大，K-means算法可能会无法正确地识别簇的边界。在这种情况下，算法可能会将密度较低的簇划分成多个子簇，或者将密度较高的簇错误地划分为同一个簇。
+
+  
 
 Q13：***怎样在非常大的数据集上执行K-means算法？***
 
